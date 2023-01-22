@@ -6,20 +6,23 @@
 
 ### STEP 1 — INSTALLING APACHE AND UPDATING THE FIREWALL
 
-What exactly is Apache?
+#### What exactly is Apache?
 
 Apache HTTP Server is the most widely used web server software. Developed and maintained by Apache Software Foundation, Apache is an open source software available for free. It runs on 67% of all webservers in the world. It is fast, reliable, and secure. It can be highly customized to meet the needs of many different environments by using extensions and modules. Most WordPress hosting providers use Apache as their web server software. However, websites and other applications can run on other web server software as well. Such as Nginx, Microsoft’s IIS, etc.
 The Apache web server is among the most popular web servers in the world. It’s well documented, has an active community of users, and has been in wide use for much of the history of the web, which makes it a great default choice for hosting a website.
-Install Apache using Ubuntu’s package manager ‘apt’:
 
-#update a list of packages in package manager
-sudo apt update
+```
+Install Apache using Ubuntu’s package manager ‘`apt`’:
 
-#run apache2 package installation
-sudo apt install apache2
+#### update a list of packages in package manager
+`sudo apt update`
+
+#### run apache2 package installation
+`sudo apt install apache2`
+```
 
 To verify that apache2 is running as a Service in our OS, use following command
-sudo systemctl status apache2
+`sudo systemctl status apache2`
 
 If it is green and running, then you did everything correctly – you have just launched your first Web Server in the Clouds!
 
@@ -34,7 +37,7 @@ First, let us try to check how we can access it locally in our Ubuntu shell, run
 or
  `curl http://127.0.0.1:80`
 
-These 2 commands above actually do pretty much the same – they use ‘curl’ command to request our Apache HTTP Server on port 80 (actually you can even try to not specify any port – it will work anyway). The difference is that: in the first case we try to access our server via DNS name and in the second one – by IP address (in this case IP address 127.0.0.1 corresponds to DNS name ‘localhost’ and the process of converting a DNS name to IP address is called "resolution"). We will touch DNS in further lectures and projects.
+These 2 commands above actually do pretty much the same – they use ‘curl’ command to request our Apache HTTP Server on port 80 (actually you can even try to not specify any port – it will work anyway). The difference is that: in the first case we try to access our server via DNS name and in the second one – by IP address (in this case IP address 127.0.0.1 corresponds to DNS name ‘localhost’ and the process of converting a `DNS name` to IP address is called "resolution"). We will touch DNS in further lectures and projects.
 
 As an output you can see some strangely formatted test, do not worry, we just made sure that our Apache web service responds to ‘curl’ command with some payload.
 
@@ -258,14 +261,14 @@ In case you want to change this behavior, you’ll need to edit the `/etc/apach
 
 `sudo vim /etc/apache2/mods-enabled/dir.conf`
 
-
-> <IfModule mod_dir.c>
->        #Change this:
->       #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
->        #To this:
->       DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-> </IfModule>
-
+```
+<IfModule mod_dir.c>
+       #Change this:
+       #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+       #To this:
+       DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+```
 
 After saving and closing the file, you will need to reload Apache so the changes take effect:
 `sudo systemctl reload apache2`
@@ -285,4 +288,17 @@ phpinfo();
 ```
 
 When you are finished, save and close the file, refresh the page and you will see a page similar to this:
-![alt text](php_page.png)
+![alt text](deployed_LAMP_output.png)
+
+This page provides information about your server from the perspective of PHP. It is useful for debugging and to ensure that your settings are being applied correctly.
+
+If you can see this page in your browser, then your PHP installation is working as expected.
+
+After checking the relevant information about your PHP server through that page, it’s best to remove the file you created as it contains sensitive information about your PHP environment -and your Ubuntu server. You can use `rm` to do so:
+`sudo rm /var/www/projectlamp/index.php`
+
+You can always recreate this page if you need to access the information again later.
+
+Credit: This guide was inspired by Digital Ocean
+
+Congratulations! You have finished your very first REAL LIFE PROJECT by deploying a LAMP stack website in AWS Cloud!
