@@ -258,14 +258,14 @@ In case you want to change this behavior, you’ll need to edit the `/etc/apach
 
 `sudo vim /etc/apache2/mods-enabled/dir.conf`
 
-```
-<IfModule mod_dir.c>
-        #Change this:
-        #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
-        #To this:
-        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-</IfModule>
-```
+
+> <IfModule mod_dir.c>
+>        #Change this:
+>       #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+>        #To this:
+>       DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+> </IfModule>
+
 
 After saving and closing the file, you will need to reload Apache so the changes take effect:
 `sudo systemctl reload apache2`
@@ -285,4 +285,4 @@ phpinfo();
 ```
 
 When you are finished, save and close the file, refresh the page and you will see a page similar to this:
-![alt text]image.png
+![alt text](php_page.png)
