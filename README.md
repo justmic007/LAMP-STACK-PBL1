@@ -1,6 +1,14 @@
-# LAMP-STACK-PBL1
+# LAMP STACK IMPLEMENTATION
 
 ## WEB STACK IMPLEMENTATION (LAMP STACK) IN AWS
+
+To implement a LAMP(Linux, Apache, MYSQL, PHP or Python or Perl) Stack, the following steps should be implemented:
+
+- [X] Step 1 — installing apache and updating the firewall
+- [X] Step 2 — installing mysql
+- [X] Step 3 — installing php
+- [X] Step 4 — creating a virtual host for your website using apache
+- [X] Step 5 — enable php on the website
 
 ### STEP 0 - SETUP EC2 INSTANCE ON AWS
 
